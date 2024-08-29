@@ -1,11 +1,12 @@
-const connectToMongoDB = require("./db.js")
-const express = require("express")
-const cors = require("cors")
+const connectToMongoDB = require("./db.js");
+const app = require("./config/app.js")
+const { API_PORT } = require("./config/config.js");
 
 //Establishing Connection to MongoDB
-connectToMongoDB()
+connectToMongoDB();
 
-const app = express()
+app.listen(API_PORT, () => {
+    console.log(`Server running on port: ${API_PORT}`);
+});
 
-app.use(cors())
-app.use(express.json())
+
